@@ -1,0 +1,123 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{multicol}
+\usepackage[latin1]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage{graphicx}
+
+
+\begin{document}
+
+% CAPA
+\begin{titlepage} 
+\begin{center} 
+{\large FATEC Rubens Lara}\\[0.2cm] 
+{\large Ci\^{e}ncia de Daods}\\[0.2cm]
+{\large Matem\'{a}tica B\'{a}sica}\\[4.1cm]
+{\bf \huge Entropia de Dados}\\[4.1cm] 
+{\large Enri Lopes Iwasaki}\\[0.5cm] 
+{\large Leandro Costa Santos}\\[4.7cm]
+{\large Santos}\\[0.2cm]
+{\large 2023}
+\end{center}
+\end{titlepage}
+
+\newpage
+
+    A base de dados utilizada foi obtida por meio do {\bfseries IGBE - Instituto Brasileiro de Geografia e Estat\'{i}stica}. A base apresenta dados referentes \‘{a} {\bfseries S\'{i}ntese de Indicadores Sociais}, que analisa a qualidade de vida e os n\'{i}veis de bem-estar das pessoas, fam\'{i}lias e grupos populacionais, a efetiva\c{c}\~{a}o de direitos humanos e sociais, bem como o acesso a diferentes servi\c{c}os, bens e oportunidades, por meio de indicadores que visam contemplar a heterogeneidade da sociedade brasileira sob a perspectiva das desigualdades sociais.
+\paragraph{}
+    Os dados verificados abordam, mais precisamente, a {\bfseries Total e respectiva distribui\c{c}\~{a}o percentual das pessoas, por classes de rendimento no ano de 2022}. Estando dispon\'{i}vel em: https://www.ibge.gov.br/estatisticas/
+    sociais/trabalho/9221sintese\_ de\_indicadores\_sociais.html?=\&t=resultados.
+
+\begin{figure} [h]
+\\
+    \includegraphics[width=14cm, height=2cm]{IBGE.png}
+\end{figure}
+
+\begin{center}
+&\begin{array}{|c|c|c|}
+    \hline \multicolumn{3}{|c|}{\text { Popula\c{c}\~{a}o Total do Brasil }} \\
+    \hline \multicolumn{3}{|c|}{212.577 .000} \\
+    \hline \text { Rendimento em Sal\'{a}rios Recebidos } & \text { Popula\c{c}\~{a}o } & \text { Porcentagem }(\%) \\
+    \hline 0 & 4.251 .540 & 2 \\
+    \hline 0-1 & 130.522 .278 & 61,4 \\
+    \hline 1-2 & 48.042 .402 & 22,6 \\
+    \hline 2-3 & 13.817 .505 & 6,5 \\
+    \hline 3-5 & 8.928 .234 & 4,2 \\
+    \hline>5 & 7.015 .041 & 3,3 \\
+    \hline
+\end{array}\\
+\end{center}
+
+
+\begin{center} 
+$$
+    & Classes=\left\{{ }'0' \ , '0-1' \ , '1-2' \ , '2-3' \ , '3-5' \ , '>5' }\right\} \\ 
+    \qquad \qquad { \mid Classes \mid }=6
+$$
+\end{center}
+
+\begin{center}
+\[
+    \mathrm{H}(X)=-\sum_{x \ \in \ classes} \mathrm{P}\left(x\right) \log _2 \mathrm
+    \left(P \left(x\right)\right) \\
+\]
+\end{center}
+
+\begin{center}
+$
+   \quad \mathrm{H}=-\left(0,02 \log _2^{0,02}+0,614 \log _2^{0,614}+0,226
+    \log _2^{0,226}+\right\\ \quad \qquad 0,65 \log _2^{0,065}+0,042 \log _2^{0,042}+0,033 \log _2^{0,033)} 
+$
+\end{center}
+
+\begin{aligned}
+    \quad \log _2^{0,02}=\frac{\log 0,02}{\log 2}=-5,64 \qquad \log _2 0,614=\frac{\log 0,614}{\log 2}=-0,70 \\
+    \\
+    \log _2^{0,226}=\frac{\log 0,226}{\log 2}=-2,15 \qquad \log _2^{0,065}=\frac{\log 0,065}{\log 2}=-3,94\\
+    \\
+    \log _2^{0,042}=\frac{\log 0,042}{\log 2}=-4,57 \qquad \log _2^{0,033}=\frac{\log 0,033}{\log 2}=-4,92 \\
+    \\
+\end{aligned}
+
+\begin{aligned}
+\[
+    & \quad \mathrm{H}=-(0,02 \cdot(-5,64)+0,614 \cdot(-0,70)+0,0226 \cdot(-2,15)+ \\
+    & \qquad \qquad 0,065 \cdot(-3,94)+0,042 \cdot(-4,57)+0,033 \cdot(-4,92)) \\
+\]
+
+\begin{center}
+    \fbox{ $$ \mathrm{H}=1,64 $$ } 
+    \\
+\end{center}
+
+\paragraph{}
+\begin{center}
+    {\bfseries Entropia M\'{a}xima dos Dados}
+\[
+    \operatorname{Max}_{\mathrm{H}} = \log _2 ^ {\mid classes \mid}=\log _2 ^ 6=\frac{\log 6}{\log 2}
+\]
+    \fbox{ $$ \ \operatorname{Max}{_\mathrm{H}}=2,58 \quad $$ } \\
+\end{center}
+
+\paragraph{}
+\paragraph{}
+ {\bfseries Conclus\~{a}o:} os dados apresentados n\~{a}o possuem alto grau de aleatoriedade. Visto que o valor da entropia dos dados est\'{a} distante do valor de entropia m\'{a}xima, pode-se ent\~{a}o concluir que os dados n\~{a}o se distribuem uniformemente.
+
+\newpage
+
+Programa\c{c}\~{a}o do m\'{e}todo em Python:
+\\
+
+\begin{figure} [h]
+    \includegraphics[width=15cm, height=8cm]{entropiapy.png}
+\end{figure}
+
+Demonstra\c{c}\~{a}o do Console:
+\begin{figure} [h]
+    \includegraphics[width=15cm, height=5cm]{consoleentrop.png}
+\end{figure}
+
+\end{document}
+
+
